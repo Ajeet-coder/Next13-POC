@@ -6,15 +6,15 @@ import ImageNotFound from './ImageNotFound';
 const ImageList = (props:any) => {
     if (null != props.images.results) {
         return (
-          <div className="App">
-            <div className="mydiv">
-              <div className="gallery">
+          
+          <main className="container mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 auto-rows-max	 gap-6 m-10">
                 {_.values(props.images.results).map((item) => {
                   return (
                     <>
                       <Image
                         alt="img"
-                        className="image"
+                        className="w-full object-cover aspect-square"
                         key={item.id}
                         src={item.urls.regular}
                         width={500}
@@ -24,8 +24,8 @@ const ImageList = (props:any) => {
                   );
                 })}
               </div>
-            </div>
-          </div>
+            </main>
+          
         );
       } else {
         
