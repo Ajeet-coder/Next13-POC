@@ -1,9 +1,9 @@
 "use client";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -11,6 +11,12 @@ export const LoginForm = () => {
   const [password, setPassword] = useState("");
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/";
+  const { data: session } = useSession();
+  useEffect(() => {
+    if (session) {
+      return redirect("/");
+    }
+  }, [session]);
   const credentialSubmitHandler = async (e: any) => {
     e.preventDefault();
     const res = await signIn("credentials", {
