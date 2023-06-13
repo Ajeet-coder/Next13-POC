@@ -1,3 +1,5 @@
+import Navigation from "../components/Navigation";
+
 export default function HomeLayout({
   children,
 }: {
@@ -5,7 +7,12 @@ export default function HomeLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <header>
+          <Navigation />
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
