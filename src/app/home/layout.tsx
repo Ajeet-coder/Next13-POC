@@ -7,7 +7,7 @@ export default function HomeLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true}>
         <header>
           <Navigation />
         </header>
