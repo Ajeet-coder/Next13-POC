@@ -10,7 +10,7 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: "jwt",
-    maxAge: 60,
+    maxAge: 600,
   },
   providers: [
     GoogleProvider({
