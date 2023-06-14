@@ -10,11 +10,11 @@ export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/";
+  const callbackUrl = searchParams.get("callbackUrl") || "/home";
   const { data: session } = useSession();
   useEffect(() => {
     if (session) {
-      return redirect("/");
+      return redirect("/home");
     }
   }, [session]);
   const credentialSubmitHandler = async (e: any) => {
